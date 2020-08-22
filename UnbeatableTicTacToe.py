@@ -1,3 +1,5 @@
+import game_client
+import game_server
 
 def new_board():
     board = [['*' for _ in range(3)] for _ in range(3)]
@@ -105,13 +107,10 @@ def runner_code(board):
 
 
 if __name__ == "__main__":
-    # player1 = (input("Pls enter name for X: "), 'X' )
-    # player2 = (input("Pls enter name for O: "), 'O')
     board = new_board()
     render_board(board)
 
     runner_code(board)
-
 
 # board = new_board()
 # render_board(board)
