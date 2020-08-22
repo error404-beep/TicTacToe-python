@@ -1,5 +1,5 @@
-import game_client
-import game_server
+# import game_client
+# import game_server
 
 def new_board():
     board = [['*' for _ in range(3)] for _ in range(3)]
@@ -55,22 +55,22 @@ def get_winner(board):
                 draw = False
     if draw:
         print('OH NO! IT\'S A DRAW')
-        return False
+        return 'QUIT'
     # Check for rows:
     for row in board:
         if (not '*' in row) and (row[0] == row[1] == row[2]):
             print(f'CONGRATULATIONS {row[0]} HAS WON THE GAME. ROW')
-            return True
+            return 'QUIT'
 
     # Checks for columns
     for j in range(3):
         if (board[0][j] == board[1][j] == board[2][j]) and board[0][j] != '*':
             print(f'CONGRATULATIONS {board[0][j]} HAS WON THE GAME. COLUMN')
-            return True
+            return 'QUIT'
     # CHecks for diagonals:
     if ((board[0][0] == board[1][1] == board[2][2]) or (board[0][2] == board[1][1] == board[2][0])) and board[1][1] != '*':
         print(f'CONGRATULATIONS {board[1][1]} HAS WON THE GAME. DIAGNOL')
-        return True
+        return 'QUIT'
     
     return False
 
@@ -78,7 +78,7 @@ def get_winner(board):
 def runner_code(board):
     turn = 1
     # render_board(board)
-    while get_winner(board) == False:
+    while get_winner(board) != 'QUIT':
         if turn == 1:
             player = 'X'
         else:
