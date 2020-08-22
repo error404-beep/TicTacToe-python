@@ -1,5 +1,6 @@
 # import game_client
 # import game_server
+import game_ai
 
 def new_board():
     board = [['*' for _ in range(3)] for _ in range(3)]
@@ -44,8 +45,8 @@ def validate_move(move, board):
     if corr_box == '*':
         return False  # Stops the while loop for turn
     else:
-        return print(f"Invalid position. Position already occupied by {corr_box}")
-
+        print(f"Invalid position. Position already occupied by {corr_box}")
+        return True
 
 def get_winner(board):
     draw = True
@@ -87,7 +88,8 @@ def runner_code(board):
         # Move input and validation
         val = True
         while val:
-            move = tuple(take_input(player=player))
+            #move = tuple(take_input(player=player))
+            move = game_ai.random_ai(board, player)
             if validate_move(move, board):
                 val = True
             else:
